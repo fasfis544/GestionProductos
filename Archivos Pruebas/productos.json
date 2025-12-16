@@ -1,0 +1,42 @@
+[
+  {
+    "id": 101,
+    "nombre": "Bon o Bon Chocolate",
+    "marca": "ARCOR",
+    "categoria": "SNACK",
+    "precio": 450.0,
+    "stock": 30
+  },
+  {
+    "id": 102,
+    "nombre": "Manaos Cola 2L",
+    "marca": "GENERICA",
+    "categoria": "BEBIDA",
+    "precio": 750.0,
+    "stock": 25
+  },
+  {
+    "id": 103,
+    "nombre": "Beldent Menta",
+    "marca": "BAGLEY",
+    "categoria": "SNACK",
+    "precio": 550.0,
+    "stock": 40
+  },
+  {
+    "id": 104,
+    "nombre": "Pepsi Black 500ml",
+    "marca": "PEPSI",
+    "categoria": "BEBIDA",
+    "precio": 650.0,
+    "stock": 50
+  },
+  {
+    "id": 105,
+    "nombre": "Marlboro Box 20u",
+    "marca": "GENERICA",
+    "categoria": "CIGARRILLO",
+    "precio": 2700.0,
+    "stock": 15
+  }
+]

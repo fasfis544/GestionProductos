@@ -1,0 +1,169 @@
+
+/* =========================================================
+   ESTILO GENERAL
+========================================================= */
+.root {
+    -fx-font-family: "Segoe UI", Arial;
+    -fx-background-color: linear-gradient(to bottom, #f7f9fb, #eef2f5);
+}
+
+/* =========================================================
+   TÍTULO PRINCIPAL
+========================================================= */
+.titulo {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2c3e50;
+    -fx-padding: 10 0 10 0;
+}
+
+/* =========================================================
+   TOOLBAR SUPERIOR
+========================================================= */
+.tool-bar {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #dfe6e9;
+    -fx-border-width: 0 0 1 0;
+    -fx-padding: 8;
+}
+
+/* =========================================================
+   LABELS
+========================================================= */
+.label {
+    -fx-text-fill: #2f3640;
+    -fx-font-size: 13px;
+}
+
+/* Labels de secciones */
+.label.seccion {
+    -fx-font-weight: bold;
+    -fx-text-fill: #34495e;
+}
+
+/* =========================================================
+   CAMPOS DE TEXTO Y COMBOS
+========================================================= */
+.text-field, .combo-box {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+    -fx-border-color: #ced6e0;
+    -fx-padding: 7;
+}
+
+.text-field:focused, .combo-box:focused {
+    -fx-border-color: #3498db;
+    -fx-border-width: 1.5;
+}
+
+/* =========================================================
+   BOTONES GENERALES
+========================================================= */
+.button {
+    -fx-background-color: linear-gradient(to bottom, #4aa3df, #3498db);
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 10;
+    -fx-padding: 7 16;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 4, 0, 0, 2);
+}
+
+.button:hover {
+    -fx-background-color: linear-gradient(to bottom, #5dade2, #2e86c1);
+}
+
+.button:pressed {
+    -fx-background-color: #1f618d;
+    -fx-effect: none;
+}
+
+/* =========================================================
+   BOTÓN ELIMINAR
+========================================================= */
+.button.eliminar {
+    -fx-background-color: linear-gradient(to bottom, #e74c3c, #c0392b);
+}
+
+.button.eliminar:hover {
+    -fx-background-color: linear-gradient(to bottom, #ef6153, #a93226);
+}
+
+/* =========================================================
+   BOTONES SECUNDARIOS (ordenar / exportar)
+========================================================= */
+.button.secundario {
+    -fx-background-color: #dfe6e9;
+    -fx-text-fill: #2d3436;
+}
+
+.button.secundario:hover {
+    -fx-background-color: #ced6e0;
+}
+
+/* =========================================================
+   TITLED PANE (PANELES)
+========================================================= */
+.titled-pane {
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-border-color: #dcdde1;
+}
+
+.titled-pane > .title {
+    -fx-background-color: linear-gradient(to right, #ecf0f1, #f5f6fa);
+    -fx-font-weight: bold;
+    -fx-text-fill: #2c3e50;
+    -fx-padding: 6 10;
+}
+
+/* =========================================================
+   LIST VIEW (LISTADO DE PRODUCTOS)
+========================================================= */
+.list-view {
+    -fx-background-radius: 12;
+    -fx-border-radius: 12;
+    -fx-border-color: #dcdde1;
+    -fx-padding: 4;
+}
+
+.list-cell {
+    -fx-padding: 10;
+    -fx-font-size: 13px;
+}
+
+.list-cell:filled:hover {
+    -fx-background-color: #ecf0f1;
+}
+
+.list-cell:selected {
+    -fx-background-color: linear-gradient(to right, #3498db, #2980b9);
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+/* =========================================================
+   ZONAS DE FILTRO / FOOTER
+========================================================= */
+.hbox, .vbox {
+    -fx-spacing: 8;
+}
+
+/* =========================================================
+   MENSAJE INFERIOR
+========================================================= */
+#mensaje {
+    -fx-font-weight: bold;
+    -fx-text-fill: #2c3e50;
+}
+
+/* Mensaje de éxito */
+#mensaje.exito {
+    -fx-text-fill: #27ae60;
+}
+
+/* Mensaje de error */
+#mensaje.error {
+    -fx-text-fill: #e74c3c;
+}

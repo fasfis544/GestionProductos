@@ -1,0 +1,7 @@
+==============================================
+LISTADO DE PRODUCTOS (precio <= 700.0)
+==============================================
+ID	NOMBRE	MARCA	CATEGORIA	PRECIO	STOCK
+101	Bon o Bon Chocolate	ARCOR	SNACK	450.0	30
+103	Beldent Menta	BAGLEY	SNACK	550.0	40
+104	Pepsi Black 500ml	PEPSI	BEBIDA	650.0	50

@@ -1,0 +1,26 @@
+# Archivo binario simulado - Productos Kiosco
+# (Si activás serialización real, este archivo se generará en binario)
+
+Producto: Snack
+ID=101
+Nombre=Bon o Bon Chocolate
+Marca=ARCOR
+Precio=450.0
+Stock=30
+Categoria=SNACK
+
+Producto: Bebida
+ID=102
+Nombre=Manaos Cola 2L
+Marca=GENERICA
+Precio=750.0
+Stock=25
+Categoria=BEBIDA
+
+Producto: Cigarillo
+ID=103
+Nombre=LM Blue Box
+Marca=GENERICA
+Precio=2300.0
+Stock=10
+Categoria=CIGARRILLO

@@ -17,7 +17,7 @@ public class GestionProductos implements ICRUD<Mercaderia, Integer>, Iterable<Me
 
     private List<Mercaderia> lista = new ArrayList<>();
 
-    // ---- CRUD ----
+    //CRUD
 
     @Override
     public boolean crear(Mercaderia p) {
@@ -61,7 +61,7 @@ public class GestionProductos implements ICRUD<Mercaderia, Integer>, Iterable<Me
         return false;
     }
 
-    // ---- Ordenamientos ----
+    //Ordenamientos
 
     public void ordenarPorNombre() {
         Collections.sort(lista);
@@ -75,7 +75,7 @@ public class GestionProductos implements ICRUD<Mercaderia, Integer>, Iterable<Me
         Collections.sort(lista, (a, b) -> Integer.compare(a.getStock(), b.getStock()));
     }
 
-    // ---- Filtros simples ----
+    //Filtros simples
 
     public List<Mercaderia> filtrarPorNombre(String texto) {
         List<Mercaderia> salida = new ArrayList<>();
@@ -95,7 +95,7 @@ public class GestionProductos implements ICRUD<Mercaderia, Integer>, Iterable<Me
         return salida;
     }
 
-    // ---- Interfaces funcionales ----
+    //Interfaces funcionales
 
     public void paraCada(Consumer<Mercaderia> accion) {
         for (Mercaderia p : lista) accion.accept(p);
@@ -128,7 +128,7 @@ public class GestionProductos implements ICRUD<Mercaderia, Integer>, Iterable<Me
         }
     }
 
-    // ---- Iteración ----
+    //Iteración
 
     @Override
     public Iterator<Mercaderia> iterator() {
@@ -140,7 +140,7 @@ public class GestionProductos implements ICRUD<Mercaderia, Integer>, Iterable<Me
         while (it.hasNext()) System.out.println(it.next());
     }
 
-    // ---- Wildcards ----
+    //Wildcards
 
     public void imprimirNombres(List<? extends Mercaderia> l) {
         for (Mercaderia p : l) System.out.println(p.getNombre());
@@ -150,7 +150,7 @@ public class GestionProductos implements ICRUD<Mercaderia, Integer>, Iterable<Me
         l.add(p);
     }
 
-    // ---- Excepciones ----
+    //Excepciones
 
     public Mercaderia buscarObligatorio(int id) {
         Mercaderia p = leerPorId(id);
@@ -162,7 +162,7 @@ public class GestionProductos implements ICRUD<Mercaderia, Integer>, Iterable<Me
         if (precio < 0) throw new DatoInvalidoException("Precio inválido");
     }
 
-    // ---- Persistencia ----
+    //Persistencia
 
     public void guardarCsv(String archivo) { PersistenciaProductos.guardarCsv(lista, archivo); }
     public void cargarCsv(String archivo) { PersistenciaProductos.cargarCsv(lista, archivo); }
@@ -172,7 +172,7 @@ public class GestionProductos implements ICRUD<Mercaderia, Integer>, Iterable<Me
         PersistenciaProductos.exportarTxtFiltrado(lista, archivo, max);
     }
 
-    // ---- Depuración ----
+    //Depuración
 
     public void mostrar() {
         for (Mercaderia p : lista) System.out.println(p);

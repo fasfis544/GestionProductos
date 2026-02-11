@@ -4,7 +4,7 @@ import enums.CategoriaMercaderia;
 import enums.Marca;
 import java.io.Serializable;
 
-// Clase base para todos los productos del supermercado
+// Clase base para todos los productos del kiosco
 public abstract class Mercaderia
         implements Comparable<Mercaderia>, Serializable, Identificable<Integer> {
 
@@ -87,4 +87,6 @@ public abstract class Mercaderia
                stock;
     }
 }
+
+
 

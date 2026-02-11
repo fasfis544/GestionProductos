@@ -20,47 +20,59 @@ public class GestionProductos implements ICRUD<Mercaderia, Integer>, Iterable<Me
     //CRUD
 
     @Override
+    
     public boolean crear(Mercaderia p) {
+
+        validarId(p.getId());
+        validarNombre(p.getNombre());
+        validarPrecio(p.getPrecio());
+        validarStock(p.getStock());
+
         if (leerPorId(p.getId()) != null) return false;
+
         lista.add(p);
         return true;
     }
 
     @Override
     public Mercaderia leerPorId(Integer id) {
-        for (Mercaderia p : lista) {
-            if (p.getId() == id) return p;
-        }
-        return null;
+    for (Mercaderia p : lista) {
+        if (p.getId().equals(id)) return p;
     }
+    return null;
+}
 
     @Override
     public List<Mercaderia> leerTodos() {
         return new ArrayList<>(lista);
     }
 
-    @Override
     public boolean actualizar(Mercaderia entidad) {
-        for (int i = 0; i < lista.size(); i++) {
-            if (lista.get(i).getId() == entidad.getId()) {
-                lista.set(i, entidad);
-                return true;
-            }
+
+    validarId(entidad.getId());
+    validarNombre(entidad.getNombre());
+    validarPrecio(entidad.getPrecio());
+    validarStock(entidad.getStock());
+
+    for (int i = 0; i < lista.size(); i++) {
+        if (lista.get(i).getId().equals(entidad.getId())) {
+            lista.set(i, entidad);
+            return true;
         }
-        return false;
     }
+    return false;
+}
 
     @Override
     public boolean eliminarPorId(Integer id) {
-        for (int i = 0; i < lista.size(); i++) {
-            if (lista.get(i).getId() == id) {
-                lista.remove(i);
-                return true;
-            }
+    for (int i = 0; i < lista.size(); i++) {
+        if (lista.get(i).getId().equals(id)) {
+            lista.remove(i);
+            return true;
         }
-        return false;
     }
-
+    return false;
+}
     //Ordenamientos
 
     public void ordenarPorNombre() {
@@ -158,23 +170,47 @@ public class GestionProductos implements ICRUD<Mercaderia, Integer>, Iterable<Me
         return p;
     }
 
-    public void validarPrecio(double precio) {
-        if (precio < 0) throw new DatoInvalidoException("Precio inválido");
+        private void validarId(int id) {
+        if (id <= 0) {
+            throw new DatoInvalidoException("ID inválido");
+        }
+    }
+
+    private void validarNombre(String nombre) {
+        if (nombre == null || nombre.trim().isEmpty()) {
+            throw new DatoInvalidoException("Nombre obligatorio");
+        }
+    }
+
+    private void validarPrecio(double precio) {
+        if (precio < 0) {
+            throw new DatoInvalidoException("Precio inválido");
+        }
+    }
+
+    private void validarStock(int stock) {
+        if (stock < 0) {
+            throw new DatoInvalidoException("Stock inválido");
+        }
     }
 
     //Persistencia
 
     public void guardarCsv(String archivo) { PersistenciaProductos.guardarCsv(lista, archivo); }
-    public void cargarCsv(String archivo) { PersistenciaProductos.cargarCsv(lista, archivo); }
+    
+    public void importarCsv(String archivo) { PersistenciaProductos.cargarCsv(lista, archivo);
+}
     public void guardarJson(String archivo) { PersistenciaProductos.guardarJson(lista, archivo); }
-    public void cargarJson(String archivo) { PersistenciaProductos.cargarJson(lista, archivo); }
+    
+    public void importarJson(String archivo) {PersistenciaProductos.cargarJson(lista, archivo);
+}
     public void exportarTxtFiltrado(String archivo, double max) {
         PersistenciaProductos.exportarTxtFiltrado(lista, archivo, max);
     }
 
     //Depuración
 
-    public void mostrar() {
+     public void mostrar() {
         for (Mercaderia p : lista) System.out.println(p);
     }
 }

@@ -19,6 +19,7 @@ import javafx.stage.FileChooser;
 
 import java.io.File;
 
+
 /**
  * Versión estilizada y reorganizada de MainFX
  * - Layout principal con BorderPane
@@ -28,6 +29,8 @@ import java.io.File;
  * - Preparado para CSS externo
  */
 public class MainFX extends Application {
+    
+    private static final String ARCHIVO_AUTO = "datos.json";
 
     private GestionProductos gestion = new GestionProductos();
 
@@ -47,7 +50,11 @@ public class MainFX extends Application {
 
     @Override
     public void start(Stage stage) {
-
+        try {
+            gestion.importarJson(ARCHIVO_AUTO);
+        } catch (Exception e) {
+            // Primera vez: el archivo no existe, no pasa nada
+        }
         // =====================
         // Barra superior
         // =====================
@@ -142,12 +149,34 @@ public class MainFX extends Application {
         Button btnCsv = new Button("CSV");
         Button btnJson = new Button("JSON");
         Button btnTxt = new Button("TXT");
-
+        Button btnCargarCsv = new Button("Cargar CSV");
+        Button btnCargarJson = new Button("Cargar JSON");
+        
         btnCsv.setOnAction(e -> guardarCsv(stage));
         btnJson.setOnAction(e -> guardarJson(stage));
         btnTxt.setOnAction(e -> exportarTxt(stage));
+        
+        btnCargarCsv.setOnAction(e -> {
+        cargarCsv(stage);
+        refrescarLista();
+        lblMensaje.setText("CSV cargado correctamente");
+        });
 
-        HBox boxPersist = new HBox(10, new Label("Exportar:"), btnCsv, btnJson, btnTxt);
+        btnCargarJson.setOnAction(e -> {
+        cargarJson(stage);
+        refrescarLista();
+        lblMensaje.setText("JSON cargado correctamente");
+        });
+
+        HBox boxPersist = new HBox(
+        10,
+        new Label("Exportar:"),
+        btnCsv,
+        btnJson,
+        btnTxt,
+        new Separator(),
+        btnCargarCsv,
+        btnCargarJson);
         boxPersist.setAlignment(Pos.CENTER_LEFT);
 
         VBox bottom = new VBox(10, boxOrden, boxFiltro, boxPersist, lblMensaje);
@@ -175,7 +204,14 @@ public class MainFX extends Application {
 
         stage.setTitle("Gestión de Productos");
         stage.setScene(scene);
-        stage.show();
+        stage.setOnCloseRequest(e -> {
+        try {
+            gestion.guardarJson(ARCHIVO_AUTO);
+        } catch (Exception ex) {
+            System.out.println("No se pudieron guardar los datos");
+        }
+    });
+            stage.show();
     }
 
     // =====================
@@ -254,6 +290,12 @@ public class MainFX extends Application {
         File f = fc.showSaveDialog(stage);
         if (f != null) gestion.guardarCsv(f.getAbsolutePath());
     }
+    private void cargarCsv(Stage stage) {
+    FileChooser fc = new FileChooser();
+    fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("CSV", "*.csv"));
+    File f = fc.showOpenDialog(stage);
+    if (f != null) gestion.importarCsv(f.getAbsolutePath());
+    }
 
     private void guardarJson(Stage stage) {
         FileChooser fc = new FileChooser();
@@ -261,6 +303,12 @@ public class MainFX extends Application {
         File f = fc.showSaveDialog(stage);
         if (f != null) gestion.guardarJson(f.getAbsolutePath());
     }
+    private void cargarJson(Stage stage) {
+    FileChooser fc = new FileChooser();
+    fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("JSON", "*.json"));
+    File f = fc.showOpenDialog(stage);
+    if (f != null) gestion.importarJson(f.getAbsolutePath());
+}
 
     private void exportarTxt(Stage stage) {
         try {
@@ -279,25 +327,4 @@ public class MainFX extends Application {
     }
 }
 
-/*
-==================== estilos.css ====================
-.root {
-    -fx-font-family: "Segoe UI";
-    -fx-background-color: #f4f6f8;
-}
-.titulo {
-    -fx-font-size: 18px;
-    -fx-font-weight: bold;
-}
-.button {
-    -fx-background-radius: 6;
-}
-.titled-pane > .title {
-    -fx-background-color: #e0e0e0;
-}
-.list-view {
-    -fx-background-radius: 6;
-}
-====================================================
-*/
 

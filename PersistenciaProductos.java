@@ -25,8 +25,7 @@ public class PersistenciaProductos {
             System.out.println("Error al guardar CSV: " + e.getMessage());
         }
     }
-
-    public static void cargarCsv(List<Mercaderia> lista, String archivo) {
+     public static void cargarCsv(List<Mercaderia> lista, String archivo) {
         try (BufferedReader br = new BufferedReader(new FileReader(archivo))) {
 
             lista.clear();
@@ -46,7 +45,7 @@ public class PersistenciaProductos {
                     int stock = Integer.parseInt(partes[5]);
 
                     // Se reconstruye como Snack
-                    lista.add(new Comida(id, nombre, marca, precio, stock));
+                    lista.add(new Comida (id, nombre, marca, precio, stock));
                 }
 
                 linea = br.readLine();
@@ -59,7 +58,7 @@ public class PersistenciaProductos {
         }
     }
 
-    // ---- JSON manual ----
+    //JSON manual
 
     public static void guardarJson(List<Mercaderia> lista, String archivo) {
         try (PrintWriter pw = new PrintWriter(new FileWriter(archivo))) {
@@ -88,7 +87,7 @@ public class PersistenciaProductos {
             System.out.println("Error al guardar JSON: " + e.getMessage());
         }
     }
-
+    
     public static void cargarJson(List<Mercaderia> lista, String archivo) {
         try (BufferedReader br = new BufferedReader(new FileReader(archivo))) {
 
@@ -135,8 +134,7 @@ public class PersistenciaProductos {
             System.out.println("Error al cargar JSON: " + e.getMessage());
         }
     }
-
-    // ---- TXT filtrado ----
+    // TXT filtrado
 
     public static void exportarTxtFiltrado(List<Mercaderia> lista,
                                            String archivo, double max) {

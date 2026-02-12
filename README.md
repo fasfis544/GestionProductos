@@ -8,8 +8,8 @@ La herramienta permite:
 . Trabajar con distintas categorías: comida,bebida,medicamentos, electrodomesticos
 . Ordenarlos por nombre, precio o stock.  
 . Filtrarlos según un precio máximo. 
-. Guardar la información desde archivos CSV y JSON.  
-. Exportar listados TXT.  
+. Guardar la información desde archivos CSV , JSON y TXT.  
+. Importar archivos CSV Y JSON
 
 creado con una interfaz simple para que cualquiera pueda utilizarlo sin necesidad de contar con conocimientos informaticos, ademas de estar etilizada por un css.
 
